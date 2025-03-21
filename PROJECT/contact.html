@@ -107,7 +107,38 @@
                         <p><i class="fas fa-user"></i> Manager: Matti Virtanen</p>
                     </div>
                 </div>
-  
+    
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country" required>
+                                <option value="">Select a country</option>
+                                <option value="norway">Norway</option>
+                                <option value="sweden">Sweden</option>
+                                <option value="finland">Finland</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hotel">Hotel</label>
+                            <select id="hotel" name="hotel" required>
+                                <option value="">Select a hotel</option>
+                                <!-- Options will be populated dynamically based on the selected country -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    
+
 
       <!-- Footer -->
       <footer class="footer bg-dark">
