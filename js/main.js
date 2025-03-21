@@ -43,3 +43,61 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('active')
   );
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const countrySelect = document.getElementById('country');
+  const hotelSelect = document.getElementById('hotel');
+  const contactForm = document.getElementById('contactForm');
+
+  // Hotel data for each country
+  const hotels = {
+      norway: [
+          { name: 'Hotel Oslo Central', value: 'oslo-central' },
+          { name: 'Fjord View Hotel', value: 'fjord-view' },
+          { name: 'Royal Oslo Hotel', value: 'royal-oslo' }
+      ],
+      sweden: [
+          { name: 'Stockholm Grand Hotel', value: 'stockholm-grand' },
+          { name: 'Gothenburg Harbor Hotel', value: 'gothenburg-harbor' },
+          { name: 'Malmö City Hotel', value: 'malmo-city' }
+      ],
+      finland: [
+          { name: 'Helsinki Central Hotel', value: 'helsinki-central' },
+          { name: 'Rovaniemi Arctic Hotel', value: 'rovaniemi-arctic' },
+          { name: 'Turku Riverside Hotel', value: 'turku-riverside' }
+      ]
+  };
+
+  // Populate hotel dropdown based on selected country
+  countrySelect.addEventListener('change', () => {
+      const selectedCountry = countrySelect.value;
+      hotelSelect.innerHTML = '<option value="">Select a hotel</option>';
+
+      if (selectedCountry) {
+          hotels[selectedCountry].forEach(hotel => {
+              const option = document.createElement('option');
+              option.value = hotel.value;
+              option.textContent = hotel.name;
+              hotelSelect.appendChild(option);
+          });
+      }
+  });
+
+  // Handle form submission
+  contactForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent form from submitting
+
+      const country = countrySelect.value;
+      const hotel = hotelSelect.value;
+      const message = document.getElementById('message').value;
+
+      if (!country || !hotel || !message) {
+          alert('Please fill out all fields.');
+          return;
+      }
+
+      // Display a confirmation message (no server submission)
+      alert(`Message sent!\nCountry: ${country}\nHotel: ${hotel}\nMessage: ${message}`);
+      contactForm.reset(); // Reset the form
+  });
+});
